@@ -1,15 +1,42 @@
-import React from "react";
+import React ,{useContext}from "react";
+import {Context} from "../store/appContext.js"
+
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
+
+
+export const Home = () => {
+  
+  const {store}=useContext(Context)
+
+  return(
+    <div className="container mt-3">
+    <h2 className="text-center">Add a new contact</h2>
+    <form >
+      <div className="formgroupInput1">
+        <label for="fullName">Full Name</label>
+        <input type="text" className="form-control" id="fullName" placeholder="Full Name" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input type="email" className="form-control" id="email" placeholder="Enter Email"/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="phone">Phone</label>
+        <input type="text" className="form-control" id="phone" placeholder="Enter phone" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="address">Address</label>
+        <input type="text" className="form-control" id="address" placeholder="Enter address" />
+      </div>
+  
+      <button type="submit" className="btn btn-primary w-100 mt-3">
+        Save
+      </button>
+    </form>
+  </div>
 );
+};
+
+
