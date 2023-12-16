@@ -9,7 +9,8 @@ import "../../styles/home.css";
 
 export const Home = () => {
   
-  const {store}=useContext(Context)
+  const {store, actions}=useContext(Context)
+
   
   const [fullName, setFullName] = useState("");
 	const [email, setEmail] = useState("");
@@ -22,13 +23,14 @@ export const Home = () => {
 
     <div className="container mt-3">
     <h2 className="text-center">Add a new contact</h2>
+
     <form >
 
       <div className="form-group">
         <label htmlFor="fullName">Full Name</label>
         <input
             onChange={ (e)=> setFullName(e.target.value)}
-            value={fullName}
+            
 
             type="text" 
             className="form-control" 
@@ -40,7 +42,7 @@ export const Home = () => {
         <label htmlFor="email">Email</label>
         <input
             onChange={(e)=> setEmail(e.target.value)}
-            value={email}
+            
 
             type="email" 
             className="form-control" 
@@ -52,7 +54,7 @@ export const Home = () => {
         <label htmlFor="phone">Phone</label>
         <input 
              onChange={(e)=> setPhone(e.target.value)}
-             value={phone}
+             
  
             type="text"
             className="form-control" 
@@ -64,7 +66,7 @@ export const Home = () => {
         <label htmlFor="address">Address</label>
         <input 
            onChange={(e)=> setAddress(e.target.value)}
-           value={address}
+           
 
           type="text" 
           className="form-control"
@@ -72,11 +74,8 @@ export const Home = () => {
           placeholder="Enter address" />
       </div>
   
-      <button onClick={() => {
-					
-				}} 
-				
-      type="button" className="btn btn-primary w-100 mt-3">
+      <button onClick={() => actions.CreateContact()} 
+				      type="button" className="btn btn-primary w-100 mt-3">
         Save
       </button>
     </form>

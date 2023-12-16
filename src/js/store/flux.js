@@ -28,51 +28,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			CreateContact: () => {
 
-				console.log("CreateContact");
+						var myHeaders = new Headers();
+						myHeaders.append("Content-Type", "application/json");
 
-				var myHeaders = new Headers();
-				myHeaders.append("Content-Type", "application/json");
+						var raw = JSON.stringify({
+						"full_name": fullName,
+						"email": email,
+						"agenda_slug": "Mermate",
+						"address": address,
+						"phone": phone
+						});
 
-				var raw = JSON.stringify({
-				"full_name": "Daniel Bradley",
-				"email": "dave@gmail.com",
-				"agenda_slug": "Mermate",
-				"address": "47568 NW 34ST, 33434 FL, USA",
-				"phone": "7864445566"
-				});
+						var requestOptions = {
+						method: 'POST',
+						headers: myHeaders,
+						body: raw,
+						redirect: 'follow'
+						};
 
-				var requestOptions = {
-				method: 'POST',
-				headers: myHeaders,
-				body: raw,
-				redirect: 'follow'
-				};
-
-				fetch("https://playground.4geeks.com/apis/fake/contact/", requestOptions)
-				.then(response => response.json())
-				.then(result => console.log(result))
-				.catch(error => console.log('error', error));
-				},
+						fetch("https://playground.4geeks.com/apis/fake/contact/", requestOptions)
+						.then(response => response.json())
+						.then(result => console.log(result))
+						.catch(error => console.log('error', error));
+						},
 
 
 				//create a function to edit contact
 				
-			CreateContact: () => {
+			EditContact: () => {
 
-				console.log("	CreateContact");
+				
 			},
 	
 
 
           deleteContact:(indexToDelete)=>{
-            //console.log("deletAContact")
-			//get the store
-			//const store = getStore()
-            //console.log(store.contacts)
-		    //console.log(store.contacts.filter((item, index)=>index!=indexToDelete))
-			//setStore({ contacts:store.contacts.filter((item, index)=>index!=indexToDelete )})
-			
-           //una vez que traigo los contactos del API no me hace falta el setStore.contacts que era para traer los contactos quemados.
+           
 
 //Aquí va el fetch del API de DELETE dentro de la función deleteContact
 			var raw = "";
