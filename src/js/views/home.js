@@ -18,6 +18,19 @@ export const Home = () => {
 	const [address, setAddress] = useState("");
 
 	const [inputValue, setInputValue] = useState([]);
+
+  // funcion handleAddContact para llamar a la funcion que realiza el POST en flux. 
+  //Le pasamos como parametros los valores de los inputs.
+ 
+  const handleAddContact = () => {
+		actions.createContact({
+			full_name: fullName,
+			email: email, 
+			phone: phone,
+			address: address,
+	});
+};
+
   
   return(
 
@@ -30,7 +43,7 @@ export const Home = () => {
         <label htmlFor="fullName">Full Name</label>
         <input
             onChange={ (e)=> setFullName(e.target.value)}
-            
+            value={fullName}
 
             type="text" 
             className="form-control" 
@@ -42,7 +55,7 @@ export const Home = () => {
         <label htmlFor="email">Email</label>
         <input
             onChange={(e)=> setEmail(e.target.value)}
-            
+            value={email}
 
             type="email" 
             className="form-control" 
@@ -54,7 +67,7 @@ export const Home = () => {
         <label htmlFor="phone">Phone</label>
         <input 
              onChange={(e)=> setPhone(e.target.value)}
-             
+             value={phone}
  
             type="text"
             className="form-control" 
@@ -66,7 +79,7 @@ export const Home = () => {
         <label htmlFor="address">Address</label>
         <input 
            onChange={(e)=> setAddress(e.target.value)}
-           
+           value={address}
 
           type="text" 
           className="form-control"
@@ -74,7 +87,7 @@ export const Home = () => {
           placeholder="Enter address" />
       </div>
   
-      <button onClick={() => actions.CreateContact()} 
+      <button onClick={() => handleAddContact()} 
 				      type="button" className="btn btn-primary w-100 mt-3">
         Save
       </button>

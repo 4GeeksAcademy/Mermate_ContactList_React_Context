@@ -24,27 +24,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 
-//create a function to create a new contact and send it to the API
+			//create a function to create a new contact and send it to the API
 
-			CreateContact: () => {
-
-						var myHeaders = new Headers();
-						myHeaders.append("Content-Type", "application/json");
-
-						var raw = JSON.stringify({
-						"full_name": fullName,
-						"email": email,
-						"agenda_slug": "Mermate",
-						"address": address,
-						"phone": phone
-						});
-
-						var requestOptions = {
-						method: 'POST',
-						headers: myHeaders,
-						body: raw,
-						redirect: 'follow'
-						};
+			// cambiamos los elementos del body para que sean dinamicos y coja los valores de los inputs del formulario. 
+			//el parametro de la funcion es newContact, esto serian los valores de los inputs.
+ 
+				createContact(newContact) {
+					const requestOptions = {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+					"full_name": newContact.full_name,
+					"email": newContact.email,
+					"agenda_slug": "Mermate",
+					"address":newContact.address,
+					"phone":newContact.phone,
+					})
+					};
 
 						fetch("https://playground.4geeks.com/apis/fake/contact/", requestOptions)
 						.then(response => response.json())
@@ -54,18 +50,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 				//create a function to edit contact
-				
-			EditContact: () => {
-
-				
-			},
+		
+				editContact() {
+					
+						},
 	
-
+			// function to delete contact
 
           deleteContact:(indexToDelete)=>{
            
 
-//Aquí va el fetch del API de DELETE dentro de la función deleteContact
+			//Aquí va el fetch del API de DELETE dentro de la función deleteContact
 			var raw = "";
 
 			var requestOptions = {
@@ -99,26 +94,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			loadSomeData: () => {
 
-				//setStore({ contacts:  [
-
-					//{
-						//full_name: "Vicky Star",
-						//email: "brown&white@.horse",
-						//Phone:"(0034) 012 768 917 ",
-						//Address:"The Green Mountain B"
-					//},
-					//{
-						//full_name: "Lola Star",
-						//email: "brown&white@.horse",
-						//Phone:"(0034) 012 768 917 ",
-						//Address:"The Green Mountain B"
-						
-					//},
-				
-				//]
-				
-				
-				//});
+			
 
 		//GET traer agenda cuando se carga la página  dentro de (loadSomeData())
 		
@@ -132,16 +108,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				*/
 			},
 
-			//changeColor: (index, color) => {
-				//get the store
-				//const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				//const demo = store.demo.map((elm, i) => {
-					//if (i === index) elm.background = color;
-					//return elm;
-				//});
+			
 
 				//reset the global store
 				//setStore({ demo: demo });
