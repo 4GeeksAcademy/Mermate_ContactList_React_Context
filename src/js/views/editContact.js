@@ -6,8 +6,7 @@ import "../../styles/home.css";
 
 
 
-
-export const Home = () => {
+export const EditContact = () => {
   
   const {store, actions}=useContext(Context)
 
@@ -16,26 +15,27 @@ export const Home = () => {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [address, setAddress] = useState("");
+    
 
 	const [inputValue, setInputValue] = useState([]);
 
-  // funcion handleAddContact para llamar a la funcion que realiza el POST en flux. 
-  //Le pasamos como parametros los valores de los inputs.
- 
-  const handleAddContact = () => {
-		actions.createContact({
+  // funcion handleEditContact para llamar a la funcion que realiza el PUT en flux. 
+
+  const handleEditContact = () => {
+		actions.editContact({
+      
 			full_name: fullName,
 			email: email, 
 			phone: phone,
 			address: address,
 	});
 };
-
+ 
   
   return(
 
     <div className="container mt-3">
-    <h2 className="text-center">Add a new contact</h2>
+    <h2 className="text-center">Edit contact</h2>
 
     <form >
 
@@ -87,14 +87,12 @@ export const Home = () => {
           placeholder="Enter address" />
       </div>
   
-      <button onClick={() => handleAddContact()} 
+      <button onClick={() => handleEditContact()}
 				      type="button" className="btn btn-primary w-100 mt-3">
-        Save
+        Edit
       </button>
     </form>
-    
   </div>
-  
 );
 };
 

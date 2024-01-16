@@ -24,8 +24,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 
-			//create a function to create a new contact and send it to the API
 
+			
+
+			//[POST] create a function to create a new contact and send it to the API
 			// cambiamos los elementos del body para que sean dinamicos y coja los valores de los inputs del formulario. 
 			//el parametro de la funcion es newContact, esto serian los valores de los inputs.
  
@@ -46,21 +48,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.then(response => response.json())
 						.then(result => console.log(result))
 						.catch(error => console.log('error', error));
+						
 						},
 
 
-				//create a function to edit contact
+			// [PUT] create a function to edit contact
 		
-				editContact() {
+				editContact(contact_id, data) {
+					const requestOptions = {
+					method: 'PUT',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+							"fullName":data.fullName,
+							 "email":data.email,
+						 	 "phone":data.phone,
+						  	 "address":data.address,
 					
+					})
+					};
+
+						fetch("https://playground.4geeks.com/apis/fake/contact/" + contact_id, requestOptions)
+						.then(response => response.json())
+						.then(result => console.log(result))
+						.catch(error => console.log('error', error));
 						},
+
 	
-			// function to delete contact
+			// [DELETE] function to delete contact
 
           deleteContact:(indexToDelete)=>{
-           
-
-			//Aquí va el fetch del API de DELETE dentro de la función deleteContact
+           //Aquí va el fetch del API de DELETE dentro de la función deleteContact
 			var raw = "";
 
 			var requestOptions = {
