@@ -54,22 +54,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// [PUT] create a function to edit contact
 		
-				editContact(contact_id, data) {
+				editContact(editContact,id) {
 					const requestOptions = {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
-							"fullName":data.fullName,
-							 "email":data.email,
-						 	 "phone":data.phone,
-						  	 "address":data.address,
+							"fullName":editContact.fullName,
+							 "email":editContact.email,
+							 "agenda_slug": "Mermate",
+						 	 "phone":editContact.phone,
+						  	 "address":editContact.address,
 					
 					})
 					};
 
-						fetch("https://playground.4geeks.com/apis/fake/contact/" + contact_id, requestOptions)
+					fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, requestOptions)
 						.then(response => response.json())
-						.then(result => console.log(result))
+						.then(data => console.log(data))
 						.catch(error => console.log('error', error));
 						},
 

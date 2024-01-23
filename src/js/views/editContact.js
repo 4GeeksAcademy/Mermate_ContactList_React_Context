@@ -3,6 +3,7 @@ import {Context} from "../store/appContext.js"
 
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { useParams } from "react-router";
 
 
 
@@ -15,20 +16,26 @@ export const EditContact = () => {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [address, setAddress] = useState("");
-    
+  
+  const { idcontact} = useParams();
 
 	const [inputValue, setInputValue] = useState([]);
 
   // funcion handleEditContact para llamar a la funcion que realiza el PUT en flux. 
 
-  const handleEditContact = () => {
+  const handleEditContact = (id) => {
 		actions.editContact({
       
 			full_name: fullName,
 			email: email, 
 			phone: phone,
 			address: address,
-	});
+	}, idcontact );
+
+    setFullName("");
+    setEmail("");
+    setPhone("");
+    setAddress("");
 };
  
   
@@ -47,7 +54,6 @@ export const EditContact = () => {
 
             type="text" 
             className="form-control" 
-            id="fullName" 
             placeholder="Full Name" />
       </div>
 
@@ -56,10 +62,9 @@ export const EditContact = () => {
         <input
             onChange={(e)=> setEmail(e.target.value)}
             value={email}
-
             type="email" 
             className="form-control" 
-            id="email"
+            
             placeholder="Enter Email"/>
       </div>
 
@@ -68,10 +73,9 @@ export const EditContact = () => {
         <input 
              onChange={(e)=> setPhone(e.target.value)}
              value={phone}
- 
-            type="text"
+             type="text"
             className="form-control" 
-            id="phone"
+           
             placeholder="Enter phone" />
       </div>
 
@@ -80,10 +84,9 @@ export const EditContact = () => {
         <input 
            onChange={(e)=> setAddress(e.target.value)}
            value={address}
-
           type="text" 
           className="form-control"
-          id="address"
+          
           placeholder="Enter address" />
       </div>
   

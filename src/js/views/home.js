@@ -1,5 +1,6 @@
 import React ,{useState, useContext}from "react";
 import {Context} from "../store/appContext.js"
+import { Link } from "react-router-dom";
 
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
@@ -92,7 +93,12 @@ export const Home = () => {
         Save
       </button>
     </form>
-    
+    <div>
+    <Link to="/">
+				<p>Or get back to contacts</p>
+			</Link>
+    </div>
+   
   </div>
   
 );
