@@ -59,7 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
-							"fullName":editContact.fullName,
+							"full_name":editContact.fullName,
 							 "email":editContact.email,
 							 "agenda_slug": "Mermate",
 						 	 "phone":editContact.phone,
@@ -68,9 +68,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					};
 
-					fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, requestOptions)
+					fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`,requestOptions)
 						.then(response => response.json())
-						.then(data => console.log(data))
+						.then( console.log(`https://playground.4geeks.com/apis/fake/contact/${id}`))
 						.catch(error => console.log('error', error));
 						},
 

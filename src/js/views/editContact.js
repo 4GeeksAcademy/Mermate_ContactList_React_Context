@@ -1,9 +1,9 @@
 import React ,{useState, useContext}from "react";
 import {Context} from "../store/appContext.js"
 
-import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 
 
@@ -20,6 +20,10 @@ export const EditContact = () => {
   const { idcontact} = useParams();
 
 	const [inputValue, setInputValue] = useState([]);
+
+  const GetId = () =>{
+		console.log(`El id del elemento es ----->${idcontact}`)
+	}
 
   // funcion handleEditContact para llamar a la funcion que realiza el PUT en flux. 
 
@@ -94,8 +98,15 @@ export const EditContact = () => {
 				      type="button" className="btn btn-primary w-100 mt-3">
         Edit
       </button>
+      
     </form>
+    <div>
+    <Link to="/">
+				<p>Or get back to contacts</p>
+			</Link>
+    </div>
   </div>
+  
 );
 };
 
